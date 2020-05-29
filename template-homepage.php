@@ -30,34 +30,33 @@ get_header(); ?>
 					<div class="search-box">
 						<div class="container">
 							<div class="search-box-inner">
-								<h1>Search for Professionals</h1>
-								<form action="job-professionals.html" method="POST" role="form">
+								<h1>Pronađi pouzdane lokalne stručnjake</h1>
+								<form action="#" method="POST" role="form">
 
 									<div class="row">
 										<div class="col-md-3 col-md-offset-1">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="All Professionals">
+												<input type="text" class="form-control" placeholder="Ključna reč">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Any Location">
+												<input type="text" class="form-control" placeholder="Lokacija">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
 												<div class="select-style">
 													<select class="form-control">
-														<option>All Services</option>
-														<option>Handiwork</option>
-														<option>Painting</option>
-														<option>Decks</option>
-														<option>Electrical</option>
-														<option>Plumbing</option>
-														<option>Plaster &amp; Drywall</option>
-														<option>Flooring</option>
-														<option>Kitchen Design</option>
-														<option>Welding</option>
+														<option>Monter klima uređaja</option>
+														<option>Električar</option>
+														<option>Vodoinstalater</option>
+														<option>Moler</option>
+														<option>Domar</option>
+														<option>Automehaničar</option>
+														<option>Keramičar</option>
+														<option>Fizički radnik</option>
+														<option>Higijenski radnik</option>
 													</select>
 												</div>
 											</div>
@@ -78,64 +77,9 @@ get_header(); ?>
 			<section class="page-content">
 				<div class="container">
 
-					<!-- Stats -->
-					<div class="section-light section-nomargin">
-						<div class="section-inner">
-							<div class="row">
-								<div class="col-md-3">
-									<div class="counter-holder counter-dark">
-										<i class="fa fa-3x fa-suitcase"></i>
-										<span class="counter-wrap">
-											<span class="counter" data-to="42" data-speed="1500" data-refresh-interval="50">42</span>
-										</span>
-										<span class="counter-info">
-											<span class="counter-info-inner">All Jobs</span>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="counter-holder counter-dark">
-										<i class="fa fa-3x fa-thumbs-o-up"></i>
-										<span class="counter-wrap">
-											<span class="counter" data-to="12" data-speed="1500" data-refresh-interval="50">12</span>
-										</span>
-										<span class="counter-info">
-											<span class="counter-info-inner">Jobs Filled</span>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="counter-holder counter-dark">
-										<i class="fa fa-3x fa-user"></i>
-										<span class="counter-wrap">
-											<span class="counter" data-to="48" data-speed="1500" data-refresh-interval="50">48</span>
-										</span>
-										<span class="counter-info">
-											<span class="counter-info-inner">Professionals</span>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="counter-holder counter-dark">
-										<i class="fa fa-3x fa-users"></i>
-										<span class="counter-wrap">
-											<span class="counter" data-to="64" data-speed="1500" data-refresh-interval="50">64</span>
-										</span>
-										<span class="counter-info">
-											<span class="counter-info-inner">Members</span>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Stats / End -->
-
-					<div class="spacer-xl"></div>
-
 					<!-- Listings -->
 					<div class="title-bordered">
-						<h2>Our Professionals <small>Latest added</small></h2>
+						<h2>Najbolje ocenjeni majstori</h2>
 					</div>
 					<div class="job_listings">
 						<ul class="job_listings">
@@ -336,7 +280,7 @@ get_header(); ?>
 
 					<div class="row">
 						<div class="col-md-4 col-md-offset-4">
-							<a class="btn btn-default btn-block" href="#">View All Professionals</a>
+							<a class="btn btn-default btn-block" href="#">Prikaži više</a>
 						</div>
 					</div>
 
@@ -344,33 +288,11 @@ get_header(); ?>
 
 					<div class="spacer-xxl"></div>
 
-					<!-- Promobox -->
-					<div class="promobox" data-stellar-background-ratio="0.5">
-						<div class="row">
-							<div class="col-md-4 promobox-item">
-								<h4><span>For</span> Designers</h4>
-								<img src="<?php echo get_template_directory_uri(); ?>/images/samples/worker3.png" alt="" class="img-responsive">
-								<a href="#" class="btn btn-primary btn-sm">See Here</a>
-							</div>
-							<div class="col-md-4 promobox-item">
-								<h4><span>For</span> Plumbers</h4>
-								<img src="<?php echo get_template_directory_uri(); ?>/images/samples/worker1.png" alt="" class="img-responsive">
-								<a href="#" class="btn btn-primary btn-sm">See Here</a>
-							</div>
-							<div class="col-md-4 promobox-item">
-								<h4><span>For</span> Builders</h4>
-								<img src="<?php echo get_template_directory_uri(); ?>/images/samples/worker2.png" alt="" class="img-responsive">
-								<a href="#" class="btn btn-primary btn-sm">See Here</a>
-							</div>
-						</div>
-					</div>
-					<!-- Promobox / End -->
 
-					<div class="spacer-lg"></div>
 
 					<!-- Services -->
 					<div class="title-bordered">
-						<h2>Our Services <small>services we provided</small></h2>
+						<h2>Pronađi majstora <small></small></h2>
 					</div>
 					<div class="row">
 						<div class="col-md-4">
@@ -379,8 +301,8 @@ get_header(); ?>
 									<i class="fa fa-bug"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Pest Control</h5>
-									<p>We use the latest technology to test new and innovated products so we can protect.</p>
+									<h5>Monter klima uređaja</h5>
+									<p>Lorem ipsum dolor sit amet.</p>
 								</div>
 							</div>
 						</div>
@@ -390,8 +312,9 @@ get_header(); ?>
 									<i class="fa fa-cog"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Engineering Consultant</h5>
-									<p>Consulting engineering is a professional service that provides independent expertise.</p>
+									<h5>Električar</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
@@ -401,8 +324,9 @@ get_header(); ?>
 									<i class="fa fa-recycle"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Environmental Consulting</h5>
-									<p>Managing, protecting and restoring the environment are integral to our services.</p>
+									<h5>Vodoinstalater</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
@@ -414,8 +338,9 @@ get_header(); ?>
 									<i class="fa fa-suitcase"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Handiwork</h5>
-									<p>We are professional tile installers who can install and repair tile in many areas of your home.</p>
+									<h5>Moler</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
@@ -425,8 +350,9 @@ get_header(); ?>
 									<i class="fa fa-lightbulb-o"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Lighting Design</h5>
-									<p>Professional lighting designers dedicate their careers exclusively to the art and science of lighting.</p>
+									<h5>Domar</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
@@ -436,8 +362,9 @@ get_header(); ?>
 									<i class="fa fa-cube"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Storage</h5>
-									<p>Hiring our professional handyman services ensures proper storage installation.</p>
+									<h5>Automehaničar</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
@@ -449,8 +376,9 @@ get_header(); ?>
 									<i class="fa fa-tree"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Tree Service</h5>
-									<p>Provides vegetation management, storm restoration, and work planning services.</p>
+									<h5>Keramičar</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
@@ -460,8 +388,9 @@ get_header(); ?>
 									<i class="fa fa-car"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>Moving</h5>
-									<p>Whether you're moving down the street or across the country, we'll help you manage your relocation stress.</p>
+									<h5>Fizički radnik</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
@@ -471,48 +400,21 @@ get_header(); ?>
 									<i class="entypo tools"></i>
 								</div>
 								<div class="icon-box-body">
-									<h5>General Contracting</h5>
-									<p>We develop special tailor-made solutions in collaboration with our customers.</p>
+									<h5>Čistač/Čistačica</h5>
+																		<p>Lorem ipsum dolor sit amet.</p>
+
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- Services / End -->
 
-					<!-- Clients -->
-					<div class="section-light section-bg2 section-overlay__yes section-overlay-color__primary section-overlay_opacity-90" data-stellar-background-ratio="0.5">
-						<div class="section-inner">
-							<div class="row">
-								<div class="col-sm-3 col-md-3">
-									<div class="text-center">
-										<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo1-dark.png" alt="" class="img-responsive"></a>
-									</div>
-								</div>
-								<div class="col-sm-3 col-md-3">
-									<div class="text-center">
-										<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo2-dark.png" alt="" class="img-responsive"></a>
-									</div>
-								</div>
-								<div class="col-sm-3 col-md-3">
-									<div class="text-center">
-										<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo3-dark.png" alt="" class="img-responsive"></a>
-									</div>
-								</div>
-								<div class="col-sm-3 col-md-3">
-									<div class="text-center">
-										<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo4-dark.png" alt="" class="img-responsive"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Clients / End -->
 
 					<div class="spacer"></div>
 
 					<!-- Testimonials -->
 					<div class="title-bordered">
-						<h2>Testimonials <small>what clients say</small></h2>
+						<h2>Iskustva korisnika<small>šta klijenti stvarno kažu</small></h2>
 					</div>
 					<div class="row">
 						<div class="col-md-3">

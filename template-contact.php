@@ -16,7 +16,7 @@ get_header(); ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1>Contacts</h1>
+							<h1>Kontakt</h1>
 						</div>
 					</div>
 				</div>
@@ -42,7 +42,7 @@ get_header(); ?>
 								</div>
 								<div class="icon-box-body">
 									<h6>Address:</h6>
-									HandyMan Co., Old Town Avenue, New York, USA 23000
+									Mitrovica test
 								</div>
 							</div>
 						</div>
@@ -53,8 +53,7 @@ get_header(); ?>
 								</div>
 								<div class="icon-box-body">
 									<h6>Phone:</h6>
-									+1700 124-5678<br>
-									+1700 124-5678
+									028 555 666<br>
 								</div>
 							</div>
 						</div>
