@@ -69,13 +69,9 @@
 							<i class="fa fa-bars"></i>
 						</button>
 						<div class="menu-container">
-							<ul class="header-top-nav header-top-nav__secondary">
-								<li><a href="#"><i class="fa fa-twitter"></i> <span class="nav-label">Twitter</span></a></li>
-								<li><a href="#"><i class="fa fa-facebook"></i> <span class="nav-label">Facebook</span></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i> <span class="nav-label">Google+</span></a></li>
-								<li><a href="#"><i class="fa fa-pinterest"></i> <span class="nav-label">Pinterest</span></a></li>
-								<li><a href="#"><i class="fa fa-instagram"></i> <span class="nav-label">Instagram</span></a></li>
-								<li><a href="#"><i class="fa fa-rss"></i> <span class="nav-label">RSS Feed</span></a></li>
+							<ul class="header-top-nav header-top-nav__tertiary">
+								<li><a href="#"><i class="fa fa-envelope"></i> info@tvojmajstor.com</a></li>
+								
 							</ul>
 						</div>
 					</div>
@@ -85,8 +81,8 @@
 						</button>
 						<div class="menu-container">
 							<ul class="header-top-nav header-top-nav__tertiary">
-								<li><a href="page-login.html"><i class="fa fa-user-plus"></i> Register</a></li>
-								<li><a href="page-login.html"><i class="fa fa-sign-in"></i> Login</a></li>
+								<li><a href="page-login.html"><i class="fa fa-user-plus"></i> Registracija</a></li>
+								<li><a href="page-login.html"><i class="fa fa-sign-in"></i> Prijava</a></li>
 							</ul>
 						</div>
 					</div>
@@ -98,7 +94,7 @@
 				<div class="container">
 					<!-- Logo -->
 					<div class="logo">
-						<a href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Handyman"></a>
+						<a href="<?php echo get_site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png"></a>
 						<!-- <h1><a href="index.html"><span>Handy</span>Man</a></h1> -->
 					</div>
 					<!-- Logo / End -->
