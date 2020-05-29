@@ -17,7 +17,7 @@ get_header(); ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1>About Us</h1>
+							<h1>O Nama</h1>
 						</div>
 					</div>
 				</div>
@@ -35,76 +35,27 @@ get_header(); ?>
 							</figure>
 						</div>
 						<div class="col-md-6 col-md-offset-1">
-							<h2>Welcome to Our Site!</h2>
-							<p>Every home owner has a list of handyman, home repair, or home improvement projects he or she needs done - both interior and exterior. Sometimes that list can get quite long, too! The bathrooms that needs updating. The garbage disposal that's on the fritz. The basement that needs drywall repairs. Call our professionalis and save your money!</p>
+							<h2>Ko smo mi?</h2>
+							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin libero at elementum auctor. Sed at velit mi. Nunc rhoncus, diam in tincidunt condimentum, enim massa mollis justo, eu consectetur odio risus eget leo. Proin vel turpis quam. Nulla sollicitudin commodo lectus, vel rutrum lectus suscipit eu. Suspendisse a dui mollis, scelerisque tortor in, tincidunt justo. Donec at hendrerit sem, ac finibus turpis. Sed ut purus ac ipsum commodo tempor. In molestie leo magna, eu tempus diam consectetur vitae. Phasellus congue lorem a ornare tincidunt. Fusce facilisis sagittis ipsum, nec facilisis nisl vulputate ac. Morbi id vehicula ligula, vel congue ante. Mauris nisi quam, dictum quis dictum vitae, luctus sit amet libero. Morbi vitae imperdiet turpis.</p>
 
 							<div class="list">
 								<ul>
-									<li>Environmental Consulting &amp; Services</li>
-									<li>Handiwork</li>
-									<li>Lighting Design</li>
-									<li>Waste &amp; Junk Removal Services</li>
-									<li>Landscape Design</li>
-									<li>And much more...</li>
+									<li>test</li>
+									<li>test</li>
+									<li>test</li>
+									<li>test</li>
+									<li>test</li>
+									<li>test</li>
 								</ul>
 							</div>
 
 							<div class="spacer-sm"></div>
 							
-							<a href="#" class="btn btn-primary">Learn More</a>
-						</div>
+<!-- 							<a href="#" class="btn btn-primary">Learn More</a>
+ -->						</div>
 					</div>
 
-					<div class="section-light section-no-bottom-margin">
-						<div class="spacer"></div>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="icon-box">
-									<div class="icon">
-										<i class="fa fa-paint-brush"></i>
-									</div>
-									<div class="icon-box-body">
-										<h4>Painting</h4>
-										We've painted thousands of living rooms, kitchens and everything in between.
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="icon-box circled icon-box-animated">
-									<div class="icon">
-										<i class="fa fa-bolt"></i>
-									</div>
-									<div class="icon-box-body">
-										<h4>Electrical</h4>
-										Providing a first class reliable service in all fields of electrical.
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="icon-box squared icon-box-animated">
-									<div class="icon">
-										<i class="fa fa-wrench"></i>
-									</div>
-									<div class="icon-box-body">
-										<h4>General Contracting</h4>
-										We develop special tailor-made solutions in collaboration with our customers.
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<div class="call-to-action centered cta__fullwidth cta__overlay cta__overlay-opacity-75 cta-overlay-color__dark cta-bg2" data-stellar-background-ratio="0.5">
-						<div class="cta-inner">
-							<div class="cta-txt">
-								<h2>The Best Professionals</h2>
-								<p>Select a project category that best matches your home repair or improvement need</p>
-							</div>
-							<div class="cta-btn">
-								<a href="#" class="btn btn-primary">Get Started!</a>
-							</div>
-						</div>
-					</div>
 
 					<div class="spacer-xl"></div>
 
@@ -120,7 +71,7 @@ get_header(); ?>
 							<a href="#" class="btn btn-primary">Learn More</a>
 						</div>
 						<div class="col-md-6">
-							<h2>Why People Choose Us?</h2>
+							<h2>Najčešća pitanja?</h2>
 							<div class="panel-group panel-group__alt" id="accordion">
 								<div class="panel panel-default">
 									<div class="panel-heading">
@@ -183,30 +134,6 @@ get_header(); ?>
 					</div>
 
 					<hr class="xlg">
-
-					<h2>Our Clients</h2>
-					<div class="row">
-						<div class="col-sm-3 col-md-3">
-							<div class="text-center">
-								<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo1-light.png" alt="" class="img-responsive"></a>
-							</div>
-						</div>
-						<div class="col-sm-3 col-md-3">
-							<div class="text-center">
-								<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo2-light.png" alt="" class="img-responsive"></a>
-							</div>
-						</div>
-						<div class="col-sm-3 col-md-3">
-							<div class="text-center">
-								<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo3-light.png" alt="" class="img-responsive"></a>
-							</div>
-						</div>
-						<div class="col-sm-3 col-md-3">
-							<div class="text-center">
-								<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/client-logo4-light.png" alt="" class="img-responsive"></a>
-							</div>
-						</div>
-					</div>
 
 				</div>
 			</section>

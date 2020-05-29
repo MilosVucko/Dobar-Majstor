@@ -16,7 +16,7 @@ get_header(); ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1>Professionals List</h1>
+							<h1>Lista stručnjaka</h1>
 						</div>
 					</div>
 				</div>
@@ -32,29 +32,28 @@ get_header(); ?>
 
 							<div class="search_jobs">
 								<div class="search_keywords">
-									<label for="search_keywords">Keywords</label>
+									<label for="search_keywords">Ključna reč</label>
 									<input type="text" name="search_keywords" id="search_keywords" placeholder="All Professionals" class="form-control" value="" />
 								</div>
 
 								<div class="search_location">
-									<label for="search_location">Location</label>
+									<label for="search_location">Lokacija</label>
 									<input type="text" name="search_location" id="search_location" placeholder="Any Location" class="form-control" value="" />
 								</div>
 
 								<div class="search_type">
-									<label>Service</label>
+									<label>Kategorija</label>
 									<span class="select-style">
 										<select class="form-control">
-											<option>All Services</option>
-											<option>Handiwork</option>
-											<option>Painting</option>
-											<option>Decks</option>
-											<option>Electrical</option>
-											<option>Plumbing</option>
-											<option>Plaster &amp; Drywall</option>
-											<option>Flooring</option>
-											<option>Kitchen Design</option>
-											<option>Welding</option>
+											<option>Sve usluge</option>
+											<option>Monter klima uređaja</option>
+											<option>Električar</option>
+											<option>Vodoinstalater</option>
+											<option>Moler</option>
+											<option>Domar</option>
+											<option>Automehaničar</option>
+											<option>Fizički radnik</option>
+											<option>Higijenski radnik</option>
 										</select>
 									</span>
 								</div>

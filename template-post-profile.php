@@ -16,7 +16,7 @@ get_header(); ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1>Post a Profile</h1>
+							<h1>Dodaj radnika</h1>
 						</div>
 					</div>
 				</div>
