@@ -249,6 +249,68 @@ function create_radnici_cpt() {
 }
 add_action( 'init', 'create_radnici_cpt', 0 );
 
+
+//Creating CPT poslovi
+function create_poslovi_cpt() {
+
+	$labels = array(
+		'name'                  => _x( 'Poslovi', 'Post Type General Name', 'tvoj_majstor' ),
+		'singular_name'         => _x( 'Poslovi', 'Post Type Singular Name', 'tvoj_majstor' ),
+		'menu_name'             => __( 'Poslovi', 'Admin Menu text', 'tvoj_majstor' ),
+		'name_admin_bar'        => __( 'Poslovi', 'Add New on Toolbar', 'tvoj_majstor' ),
+		'archives'              => __( 'Poslovi Archives', 'tvoj_majstor' ),
+		'attributes'            => __( 'Poslovi Attributes', 'tvoj_majstor' ),
+		'parent_item_colon'     => __( 'Poslovi Nekretnine:', 'tvoj_majstor' ),
+		'all_items'             => __( 'Svi poslovi', 'tvoj_majstor' ),
+		'add_new_item'          => __( 'Dodaj novi posao', 'tvoj_majstor' ),
+		'add_new'               => __( 'Add New', 'tvoj_majstor' ),
+		'new_item'              => __( 'New Poslovi', 'tvoj_majstor' ),
+		'edit_item'             => __( 'Edit Poslovi', 'tvoj_majstor' ),
+		'update_item'           => __( 'Update Poslovi', 'tvoj_majstor' ),
+		'view_item'             => __( 'View Poslovi', 'tvoj_majstor' ),
+		'view_items'            => __( 'View Poslovi', 'tvoj_majstor' ),
+		'search_items'          => __( 'Search Poslovi', 'tvoj_majstor' ),
+		'not_found'             => __( 'Not found', 'tvoj_majstor' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'tvoj_majstor' ),
+		'featured_image'        => __( 'Featured Image', 'tvoj_majstor' ),
+		'set_featured_image'    => __( 'Set featured image', 'tvoj_majstor' ),
+		'remove_featured_image' => __( 'Remove featured image', 'tvoj_majstor' ),
+		'use_featured_image'    => __( 'Use as featured image', 'tvoj_majstor' ),
+		'insert_into_item'      => __( 'Insert into Poslovi', 'tvoj_majstor' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Poslovi', 'tvoj_majstor' ),
+		'items_list'            => __( 'Nekretnine list', 'tvoj_majstor' ),
+		'items_list_navigation' => __( 'Nekretnine list navigation', 'tvoj_majstor' ),
+		'filter_items_list'     => __( 'Filter Poslovi list', 'tvoj_majstor' ),
+	);
+	$args = array(
+		'label'                 => __( 'Poslovi', 'tvoj_majstor' ),
+		'description'           => __( 'Lista poslova', 'tvoj_majstor' ),
+		'labels'                => $labels,
+		'menu_icon'             => 'dashicons-admin-tools',
+		'supports'              => array('title', 'editor', 'comments', 'thumbnail', 'revisions', 'author', 'post-formats', 'excerpt'),
+		'taxonomies'            => array(),
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => false,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'hierarchical'          => true,
+		'exclude_from_search'   => false,
+		'show_in_rest'          => true,
+		'publicly_queryable'    => true,
+        'capability_type'       => 'post',
+        
+	);
+	register_post_type( 'poslovi', $args );
+
+}
+add_action( 'init', 'create_poslovi_cpt', 0 );
+
+
+
 //Custom taxonomy Location for CPT Radnici
 function create_lokacija_tax() {
 
@@ -284,6 +346,43 @@ function create_lokacija_tax() {
 }
 add_action( 'init', 'create_lokacija_tax' );
 
+//Custom taxonomy Location for CPT Poslovi
+function create_lokacijaposlovi_tax() {
+
+	$labels = array(
+		'name'              => _x( 'Lokacije', 'taxonomy general name', 'tvoj_majstor' ),
+		'singular_name'     => _x( 'Lokacija', 'taxonomy singular name', 'tvoj_majstor' ),
+		'search_items'      => __( 'Search Lokacije', 'tvoj_majstor' ),
+		'all_items'         => __( 'All Lokacije', 'tvoj_majstor' ),
+		'parent_item'       => __( 'Parent Lokacija', 'tvoj_majstor' ),
+		'parent_item_colon' => __( 'Parent Lokacija:', 'tvoj_majstor' ),
+		'edit_item'         => __( 'Edit Lokacija', 'tvoj_majstor' ),
+		'update_item'       => __( 'Update Lokacija', 'tvoj_majstor' ),
+		'add_new_item'      => __( 'Add New Lokacija', 'tvoj_majstor' ),
+		'new_item_name'     => __( 'New Lokacija Name', 'tvoj_majstor' ),
+		'menu_name'         => __( 'Lokacija', 'tvoj_majstor' ),
+	);
+	$args = array(
+		'labels' => $labels,
+		'description' => __( '', 'tvoj_majstor' ),
+		'hierarchical' => true,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => false,
+		'show_tagcloud' => true,
+		'show_in_quick_edit' => true,
+		'show_admin_column' => false,
+		'show_in_rest' => true,
+	);
+	register_taxonomy( 'lokacijaposlovi', array('poslovi'), $args );
+
+}
+add_action( 'init', 'create_lokacijaposlovi_tax' );
+
+
+
 //Adding custom taxonomy Job Category for CPT Radnici
 function create_kategorija_poslova_tax() {
 
@@ -314,7 +413,7 @@ function create_kategorija_poslova_tax() {
 		'show_admin_column' => false,
 		'show_in_rest' => true,
 	);
-	register_taxonomy( 'kategorija-poslova', array('radnici'), $args );
+	register_taxonomy( 'kategorija-poslova', array('radnici', 'poslovi'), $args );
 
 }
 add_action( 'init', 'create_kategorija_poslova_tax' );

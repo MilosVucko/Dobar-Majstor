@@ -58,6 +58,8 @@
 									<h3 class="widget-title">Najnovije dodati poslovi</h3>
 									<div class="widget-content">
 										<ul class="latest-posts-list">
+											
+										
 											<li>
 												<figure class="thumbnail"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/post-img1-sm.jpg" alt=""></a></figure>
 												<h5 class="title"><a href="#">Potreban mi je klima monter</a></h5>

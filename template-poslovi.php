@@ -1,6 +1,6 @@
 <?php
 /**
-* Template Name: Lista Radnika
+* Template Name: Lista poslova
 *
 * @package WordPress
 * @subpackage dobar-majstor
@@ -8,12 +8,12 @@
 */
 
 
-if (isset($_GET['lokacija']))
+if (isset($_GET['lokacijaposlovi']))
 {
-	$lokacija = $_GET['lokacija']; 
+	$lokacijaposlovi = $_GET['lokacijaposlovi'];
 }
 else {
-	$lokacija = "Sve lokacije";
+	$lokacijaposlovi = "Sve lokacije";
 }
 
 if (isset($_GET['kategorija-poslova']))
@@ -38,7 +38,7 @@ get_header(); ?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1>Lista stručnjaka</h1>
+					<h1>Lista dostupnih poslova</h1>
 				</div>
 			</div>
 		</div>
@@ -50,7 +50,7 @@ get_header(); ?>
 		<div class="container">
 
 			<div class="job_listings">
-				<form action="<?php echo esc_url( get_page_link( 33 ) ); ?>" class="job_filters" method="get">
+				<form action="<?php echo esc_url( get_page_link( 116 ) ); ?>" class="job_filters" method="get">
 
 					<div class="search_jobs">
 								<!-- <div class="search_keywords">
@@ -61,15 +61,15 @@ get_header(); ?>
 							<div class="search_type">
 								<label>Lokacija</label>
 								<span class="select-style">
-									<select class="form-control" name='lokacija'>
+									<select class="form-control" name='lokacijaposlovi'>
 										<?php 
 										$terms = get_terms( array( 
-											'taxonomy' => 'lokacija',
+											'taxonomy' => 'lokacijaposlovi',
 											'hide_empty' => false
 										) );
 
 										foreach( $terms as $term ) { ?>
-											<option class="option" value="<?php echo $term->name; ?>" <?php if ( $lokacija == $term->name) { echo 'selected'; } ?>>
+											<option class="option" value="<?php echo $term->name; ?>" <?php if ( $lokacijaposlovi == $term->name) { echo 'selected'; } ?>>
 												<?php echo $term->name; ?> 
 											</option>
 										<?php }; ?>
@@ -105,23 +105,22 @@ get_header(); ?>
 						
 						<?php 
 						$paged=( get_query_var( 'paged')) ? get_query_var( 'paged') : 1; 
-						$args=array( 'post_type'=> 'radnici',
+						$args=array( 'post_type'=> 'poslovi',
 							'paged' => $paged,
 							'posts_per_page' => 10,  
 							'tax_query' => array(
 								'relation' => 'AND',
 								array(
+									'taxonomy' => 'lokacijaposlovi',
+									'field' => 'slug',
+									'terms' => $lokacijaposlovi,
+								),
+								array(
 									'taxonomy' => 'kategorija-poslova',
 									'field' => 'slug',
 									'terms' => $kategorija,
 								),
-								array(
-									'taxonomy' => 'lokacija',
-									'field' => 'slug',
-									'terms' => $lokacija,
-								) ,
 							)
-
 						); 
 						$the_query = new WP_Query($args); ?>
 						<?php 
@@ -131,10 +130,10 @@ get_header(); ?>
 			// $thumb = get_the_post_thumbnail_url($post->ID, 'fontpage-loop-size'); 
 								$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
 								$kategorije_poslova = wp_get_post_terms($post->ID, 'kategorija-poslova'); 
-								$lokacija = wp_get_post_terms($post->ID, 'lokacija'); 
+								$lokacija = wp_get_post_terms($post->ID, 'lokacijaposlovi'); 
 			 //var_dump($terms);
 								// $kategorija_posla = $kategorije_poslova[0]->name;
-								// $lokacija_posla = $lokacija[0]->name;
+								 $lokacija_posla = $lokacija[1]->name;
 								?>
 
 
@@ -142,26 +141,25 @@ get_header(); ?>
 								<li class="job_listing">
 									<a href="<?php the_permalink(); ?>">
 										<div class="job_img">
-											<img src="<?php echo $featured_img_url; ?>" alt="" class="company_logo">
+											<img src="<?php echo get_template_directory_uri(); ?>/images/hammer.png" alt="" class="company_logo">
 										</div>
 										<div class="position">
 											<h3><?php the_title(); ?></h3>
-											<div class="company">
-											<?php foreach ($kategorije_poslova as $kategorija) { ?>
-												<strong>
-													<?php echo $kategorija->name; ?>,
-												</strong>
-												   	<?php } ?>
+											<!-- <div class="company">
+												test
+												<?php foreach ($kategorije_poslova as $kategorija) { ?>
+													<strong>
+														<?php echo $kategorija->name; ?>,
+													</strong>
+												<?php } ?>
 
-											</div>
+											</div> -->
 										</div>
 										<div class="location">
 											<i class="fa fa-location-arrow"></i> <?php echo $lokacija_posla; ?>
 										</div>
 										<div class="rating">
-											<div class="reviews-num"><?php //	echo kk_star_ratings(); 
-										 	 echo do_shortcode('[wpdrating]');
-											?></div>
+											<div class="reviews-num"><?php 	//echo kk_star_ratings(); ?></div>
 										</div>
 										<ul class="meta">
 											<?php 
@@ -169,9 +167,9 @@ get_header(); ?>
 											foreach ($kategorije_poslova as $kategorija) { ?>
 
 												<li class="job-type broj-<?php echo $i; ?>"><?php echo $kategorija->name; ?></li>
-												   	<?php 
-												   	$i++;
-												   } ?>
+												<?php 
+												$i++;
+											} ?>
 											
 											<li class="date">
 												Dodat <?php echo get_the_date(); ?>
@@ -194,7 +192,9 @@ get_header(); ?>
 							); 
 						} ?>
 
-					<?php endif; ?>
+					<?php endif; 
+					wp_reset_postdata();
+					?>
 				</ul>
 			</div>
 

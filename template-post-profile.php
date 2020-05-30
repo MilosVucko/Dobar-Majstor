@@ -37,7 +37,32 @@ add_post_meta($id, 'broj_telefona', $broj_telefona, false);
 add_post_meta($id, 'email_adresa', $email_adresa, false);
 
  //Postavljanje featured slike
-
+ // if ( isset($_GET['submit_worker']) ) {
+ 
+ //        $upload = wp_upload_bits($_FILES['profile_image']['name'], null, file_get_contents($_FILES['profile_image']['name']));
+ 
+ //        if ( ! $upload_file['error'] ) {
+ //            $post_id = $id; //set post id to which you need to set featured image
+ //            $filename = $upload['file'];
+ //            $wp_filetype = wp_check_filetype($filename, null);
+ //            $attachment = array(
+ //                'post_mime_type' => $wp_filetype['type'],
+ //                'post_title' => sanitize_file_name($filename),
+ //                'post_content' => '',
+ //                'post_status' => 'inherit'
+ //            );
+ 
+ //            $attachment_id = wp_insert_attachment( $attachment, $filename, $post_id );
+ 
+ //            if ( ! is_wp_error( $attachment_id ) ) {
+ //                require_once(ABSPATH . 'wp-admin/includes/image.php');
+ 
+ //                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+ //                wp_update_attachment_metadata( $attachment_id, $attachment_data );
+ //                set_post_thumbnail( $post_id, $attachment_id );
+ //            }
+ //        }
+ //    }
 
 
 get_header(); ?>
@@ -97,7 +122,7 @@ get_header(); ?>
 									$i = 0;    
 									?> <div class="d-flex justify-content-start"> <?php                    
 									foreach( $terms as $term ) { ?>
-										<div class="">
+										<div class="single-checkbox">
 											<input type="checkbox" id="extra-<?php echo $i; ?>"  name="lokacija[]" value="<?php echo $term->name; ?>" class="checkbox--class">
 											<label for="extra-<?php echo $i; ?>" class="select-label color--black"><?php echo $term->name; ?> </label>
 										</div>
@@ -124,7 +149,7 @@ get_header(); ?>
 								$i = 0;    
 								?> <div class="d-flex justify-content-start"> <?php                    
 								foreach( $terms as $term ) { ?>
-									<div class="">
+									<div class="single-checkbox">
 										<input type="checkbox" id="extra-<?php echo $i; ?>"  name="kategorija-poslova[]" value="<?php echo $term->name; ?>" class="checkbox--class">
 										<label for="extra-<?php echo $i; ?>" class="select-label color--black"><?php echo $term->name; ?> </label>
 									</div>

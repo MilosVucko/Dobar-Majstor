@@ -25,3 +25,32 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .job-type.broj-0 {
 	display: none !important;
 }
+.single-checkbox {
+	display: inline-block;
+	margin-right: 30px;
+}
+.comment-list {
+	padding-left: 0;
+}
+.comment {
+	list-style: none;
+}
+.comments-title {
+	font-size: 18px;
+	margin-bottom: 30px;
+}
+.comment-form-comment label {
+	display: block;
+}
+.info li:first-child {
+	display: none;
+}
+.meta li:first-child {
+	 display: none; 
+}
+.single-checkbox:first-child {
+	display: none;
+}
+.company strong:first-child {
+	display: none;
+}

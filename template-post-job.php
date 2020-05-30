@@ -1,142 +1,191 @@
 <?php
 /**
-* Template Name: Post a Job
+* Template Name: Post a Profile
 *
 * @package WordPress
 * @subpackage dobar-majstor
 * @since dobar-majstor 1.0
 */
 
+$naziv_zahteva = $_GET['naziv_zahteva'];
+$email_adresa = $_GET['email_adresa'];
+$broj_telefona = $_GET['broj_telefona'];
+$opis = $_GET['opis_posla'];
+$forma_dodata = false;
+
+$kategorija = $_GET['kategorija-poslova'];
+$lokacijaposlovi = $_GET['lokacijaposlovi'];
+
+//$profile_image = $_FILES['profile_image'];
+
+
+
+$id = wp_insert_post(array(
+	'post_title'=>$naziv_zahteva, 
+	'post_name' =>$naziv_zahteva,
+	'post_content' =>$opis,
+	'post_type'=>'poslovi',
+	'post_status' => 'draft'
+));
+
+var_dump($id);
+
+wp_set_object_terms( $id, $kategorija, 'kategorija-poslova' );
+wp_set_object_terms( $id, $lokacijaposlovi, 'lokacijaposlovi' );
+
+add_post_meta($id, 'broj_telefona', $broj_telefona, false);
+add_post_meta($id, 'email_adresa', $email_adresa, false);
+
+ //Postavljanje featured slike
+ // if ( isset($_GET['submit_worker']) ) {
+ 
+ //        $upload = wp_upload_bits($_FILES['profile_image']['name'], null, file_get_contents($_FILES['profile_image']['name']));
+ 
+ //        if ( ! $upload_file['error'] ) {
+ //            $post_id = $id; //set post id to which you need to set featured image
+ //            $filename = $upload['file'];
+ //            $wp_filetype = wp_check_filetype($filename, null);
+ //            $attachment = array(
+ //                'post_mime_type' => $wp_filetype['type'],
+ //                'post_title' => sanitize_file_name($filename),
+ //                'post_content' => '',
+ //                'post_status' => 'inherit'
+ //            );
+ 
+ //            $attachment_id = wp_insert_attachment( $attachment, $filename, $post_id );
+ 
+ //            if ( ! is_wp_error( $attachment_id ) ) {
+ //                require_once(ABSPATH . 'wp-admin/includes/image.php');
+ 
+ //                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+ //                wp_update_attachment_metadata( $attachment_id, $attachment_data );
+ //                set_post_thumbnail( $post_id, $attachment_id );
+ //            }
+ //        }
+ //    }
+
+
 get_header(); ?>
 <!-- Main -->
-		<div class="main" role="main">
+<div class="main" role="main">
 
-			<!-- Page Heading -->
-			<section class="page-heading">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Pošalji zahtev za majstora</h1>
-						</div>
-					</div>
+	<!-- Page Heading -->
+	<section class="page-heading">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Dodaj zahtev za posao</h1>
 				</div>
-			</section>
-			<!-- Page Heading / End -->
+			</div>
+		</div>
+	</section>
+	<!-- Page Heading / End -->
 
-			<!-- Page Content -->
-			<section class="page-content">
-				<div class="container">
-					
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<!-- Job Form -->
-							<form action="#" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
+	<!-- Page Content -->
+	<div class="page-content">
+		<div class="container">
 
-								<fieldset>
-									<label>Have an account?</label>
-									<div class="field account-sign-in">
-										<p>
-											<a class="btn btn-primary btn-sm" href="#"><i class="fa fa-key"></i> Sign in</a>
-										</p>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<!-- Profile Form -->
+					<form action="<?php echo get_page_uri(29);?>" method="get" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
+						<fieldset class="fieldset-job_title">
+							<label for="name_surname">Naziv zahteva<span class="required">*</span></label>
+							<div class="field">
+								<input type="text" class="form-control" name="naziv_zahteva" id="naziv_zahteva" placeholder="npr. Potreban moler za krečenje" value=""/>
+							</div>
+						</fieldset>	
 
-										<div class="alert alert-info alert-dismissable">
-											<button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
-											If you don‘t have an account you can create one below by entering your email address. A password will be  automatically emailed to you.
+						<fieldset>
+							<label>Email adresa </label>
+							<div class="field">
+								<input type="email" class="form-control" name="email_adresa" id="account_email" placeholder="petarpetrovic@gmail.com" value="" />
+							</div>
+						</fieldset>
+						<!-- Profile Information Fields -->
+						<fieldset class="fieldset-job_title">
+							<label for="broj_telefona">Broj telefona</label>
+							<div class="field">
+								<input type="text" class="form-control" name="broj_telefona" id="broj_telefona" placeholder="064... ..." value=""/>
+							</div>
+						</fieldset>
+
+						<fieldset class="fieldset-job_location">
+							<label for="job_location">Lokacija <span class="required">*</span></label>
+							<div class="field">
+								<div class="form-group col">
+									<?php 
+									$terms = get_terms( array( 
+										'taxonomy' => 'lokacijaposlovi',
+										'hide_empty' => false
+									) );
+									$i = 0;    
+									?> <div class="d-flex justify-content-start"> <?php                    
+									foreach( $terms as $term ) { ?>
+										<div class="single-checkbox">
+											<input type="checkbox" id="extra-<?php echo $i; ?>"  name="lokacijaposlovi[]" value="<?php echo $term->name; ?>" class="checkbox--class">
+											<label for="extra-<?php echo $i; ?>" class="select-label color--black"><?php echo $term->name; ?> </label>
 										</div>
-									</div>
-								</fieldset>
-
-								<fieldset>
-									<label>Your Email <span class="required">*</span></label>
-									<div class="field">
-										<input type="email" class="form-control" name="create_account_email" id="account_email" placeholder="you@yourdomain.com" value="" />
-									</div>
-								</fieldset>
-								
-								<!-- Job Information Fields -->
-								<fieldset class="fieldset-job_title">
-									<label for="job_title">Job Title</label>
-									<div class="field">
-										<input type="text" class="form-control" name="job_title" id="job_title" placeholder="e.g. “Painter”" />
-									</div>
-								</fieldset>
-
-								<fieldset class="fieldset-job_location">
-									<label for="job_location">Job Location <small>(optional)</small></label>
-									<div class="field">
-										<input type="text" class="form-control" name="job_location" id="job_location" placeholder="e.g. &quot;London, UK&quot;, &quot;New York&quot;, &quot;Houston, TX&quot;" />
-										<small class="description">Leave this blank if the job can be done from anywhere</small>
-									</div>
-								</fieldset>
-
-								<div class="row">
-									<div class="col-md-6">
-										<fieldset class="fieldset-job_type">
-											<label for="job_type">Job Type</label>
-											<div class="field select-style">
-												<select name="job_type" id="job_type" class="form-control">
-													<option>Unspecified</option>
-													<option>Furniture Repair &amp; Refinish</option>
-													<option>Pools</option>
-													<option>Plaster &amp; Drywall</option>
-													<option>Painting</option>
-												</select>
-											</div>
-										</fieldset>
-									</div>
-									<div class="col-md-6">
-										<fieldset class="fieldset-job_category">
-											<label for="job_category">Job category</label>
-											<div class="field select-style">
-												<select name="job_category" id="job_category" class="form-control">
-													<option>Unspecified</option>
-													<option>Appliance Services</option>
-													<option>Electrical</option>
-													<option>Handiwork</option>
-													<option>Plumbing</option>
-													<option>Bathroom Design &amp; Remodelling</option>
-												</select>
-											</div>
-										</fieldset>
-									</div>
+										<?php
+										$i++;
+									};
+									?>
 								</div>
+								<?php 
+								?>
+							</div>
+						</div>
+					</fieldset>
 
-								<fieldset class="fieldset-job_description">
-									<label>Description</label>
-									<div class="field">
-										<textarea name="textarea" cols="30" rows="8" class="form-control"></textarea>
+					<fieldset class="fieldset-job_location">
+						<label for="job_location">Kategorija posla <span class="required">*</span></label>
+						<div class="field">
+							<div class="form-group col">
+								<?php 
+								$terms = get_terms( array( 
+									'taxonomy' => 'kategorija-poslova',
+									'hide_empty' => false
+								) );
+								$i = 0;    
+								?> <div class="d-flex justify-content-start"> <?php                    
+								foreach( $terms as $term ) { ?>
+									<div class="single-checkbox">
+										<input type="checkbox" id="extra-<?php echo $i; ?>"  name="kategorija-poslova[]" value="<?php echo $term->name; ?>" class="checkbox--class">
+										<label for="extra-<?php echo $i; ?>" class="select-label color--black"><?php echo $term->name; ?> </label>
 									</div>
-								</fieldset>
-
-								<fieldset class="fieldset-application">
-									<label for="application">Application email/URL</label>
-									<div class="field">
-										<input type="text" class="form-control" name="application" id="application" placeholder="Enter an email address or website URL" />
-									</div>
-								</fieldset>
-
-								<fieldset class="fieldset-company_logo">
-									<label for="company_logo">Photo <small>(optional)</small></label>
-									<div class="field">
-										<input type="file" class="form-control" name="company_logo" id="company_logo" />
-										<small class="description">
-										Max. file size: 32 MB.</small>
-									</div>
-								</fieldset>
-
-								<div class="spacer"></div>
-
-								<p>
-									<input type="submit" name="submit_job" class="btn btn-primary" value="Preview Job Listing &rarr;" />
-								</p>
-
-							</form>
-							<!-- Job Form / End -->
+									<?php
+									$i++;
+								};
+								?>
+							</div>
+							<?php 
+							?>
 						</div>
 					</div>
+				</fieldset>
 
-				</div>
-			</section>
-			<!-- Page Content / End -->
+
+				<fieldset class="fieldset-job_description">
+					<label>Opis</label>
+					<div class="field">
+						<textarea name="opis_posla" cols="30" rows="8" class="form-control"></textarea>
+					</div>
+				</fieldset>
+
+
+				<div class="spacer"></div>
+
+				<p>
+					<input type="submit" name="submit_worker" class="btn btn-primary" value="Dodaj posao &rarr;" />
+				</p>
+
+			</form>
+			<!-- Profile Form / End -->
+		</div>
+	</div>
+
+</div>
+</div>
+<!-- Page Content / End -->
 
 <?php get_footer(); ?>
