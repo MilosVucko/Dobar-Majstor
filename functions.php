@@ -393,3 +393,9 @@ add_action( 'init', 'create_iskustva_tax' );
 
 
 //add_post_type_support( 'radnici', array( 'comments' ) );
+
+            function give_permissions( $allcaps, $cap, $args ) {
+                $allcaps['upload_files'] = true;
+                return $allcaps;
+            }
+            add_filter( 'user_has_cap', 'give_permissions', 0, 3 );     

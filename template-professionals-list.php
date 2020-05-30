@@ -133,8 +133,8 @@ get_header(); ?>
 								$kategorije_poslova = wp_get_post_terms($post->ID, 'kategorija-poslova'); 
 								$lokacija = wp_get_post_terms($post->ID, 'lokacija'); 
 			 //var_dump($terms);
-								$kategorija_posla = $kategorije_poslova[0]->name;
-								$lokacija_posla = $lokacija[0]->name;
+								// $kategorija_posla = $kategorije_poslova[0]->name;
+								// $lokacija_posla = $lokacija[0]->name;
 								?>
 
 
@@ -147,7 +147,13 @@ get_header(); ?>
 										<div class="position">
 											<h3><?php the_title(); ?></h3>
 											<div class="company">
-												<strong><?php echo $kategorija_posla; ?></strong>
+												test
+											<?php foreach ($kategorije_poslova as $kategorija) { ?>
+												<strong>
+													<?php echo $kategorija->name; ?>,
+												</strong>
+												   	<?php } ?>
+
 											</div>
 										</div>
 										<div class="location">
@@ -157,7 +163,15 @@ get_header(); ?>
 											<div class="reviews-num"><?php 	echo kk_star_ratings(); ?></div>
 										</div>
 										<ul class="meta">
-											<li class="job-type"><?php echo $kategorija_posla; ?></li>
+											<?php 
+											$i = 0;
+											foreach ($kategorije_poslova as $kategorija) { ?>
+
+												<li class="job-type broj-<?php echo $i; ?>"><?php echo $kategorija->name; ?></li>
+												   	<?php 
+												   	$i++;
+												   } ?>
+											
 											<li class="date">
 												Dodat <?php echo get_the_date(); ?>
 											</li>

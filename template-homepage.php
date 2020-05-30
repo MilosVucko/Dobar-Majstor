@@ -38,7 +38,6 @@ get_header(); ?>
 											<div class="select-style">
 											<div class="form-group">
 													<select class="form-control" name='lokacija'>
-										<option value=''>Svi gradovi</option>
 										<?php 
 										$terms = get_terms( array( 
 											'taxonomy' => 'lokacija',
@@ -56,7 +55,6 @@ get_header(); ?>
 											<div class="form-group">
 												<div class="select-style">
 													<select class="form-control" name='kategorija-poslova'>
-										<option value=''>Sve kategorije</option>
 										<?php 
 										$terms = get_terms( array( 
 											'taxonomy' => 'kategorija-poslova',
