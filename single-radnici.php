@@ -173,6 +173,25 @@
 									</table>
 								</div>
 								<!-- Table (Bordered) / End -->
+
+								<h4>Kontakt informacije</h4>
+								<div class="table-responsive">
+									<table class="table table-striped business-hours">
+										<tbody>
+											<tr>
+												<td><i class="fa fa-clock-o"></i> Broj telefona</td>
+												<td><?php the_field('broj_telefona'); ?></td>
+											</tr>
+											<tr>
+												<td><i class="fa fa-clock-o"></i> Email</td>
+												<td><?php the_field('email_adresa'); ?></td>
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+
+
 							</div>
 
 							
