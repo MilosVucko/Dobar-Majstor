@@ -131,10 +131,10 @@ get_header(); ?>
 			// $thumb = get_the_post_thumbnail_url($post->ID, 'fontpage-loop-size'); 
 								$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
 								$kategorije_poslova = wp_get_post_terms($post->ID, 'kategorija-poslova'); 
-								$lokacija = wp_get_post_terms($post->ID, 'lokacija'); 
+								$lokacije = wp_get_post_terms($post->ID, 'lokacija'); 
 			 //var_dump($terms);
 								// $kategorija_posla = $kategorije_poslova[0]->name;
-								// $lokacija_posla = $lokacija[0]->name;
+								 $lokacija_posla = $lokacije[1]->name;
 								?>
 
 
@@ -156,7 +156,8 @@ get_header(); ?>
 											</div>
 										</div>
 										<div class="location">
-											<i class="fa fa-location-arrow"></i> <?php echo $lokacija_posla; ?>
+											<i class="fa fa-location-arrow"></i> 
+											<?php echo $lokacija_posla; ?>
 										</div>
 										<div class="rating">
 											<div class="reviews-num"><?php //	echo kk_star_ratings(); 
