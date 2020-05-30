@@ -7,6 +7,33 @@
 * @since dobar-majstor 1.0
 */
 
+    $ime_prezime = $_GET['name_surname'];
+    $email_adresa = $_GET['email_adresa'];
+    $broj_telefona = $_GET['broj_telefona'];
+    $opis = $_GET['opis_posla'];
+    $forma_dodata = false;
+
+    $kategorija = $_GET['kategorija-poslova'];
+    $lokacija = $_GET['lokacija'];
+
+    $id = wp_insert_post(array(
+        'post_title'=>$ime_prezime, 
+        'post_name' =>$ime_prezime,
+        'post_content' =>$opis,
+        'post_type'=>'radnici',
+        'post_status' => 'draft'
+    ));
+
+    var_dump($id);
+    wp_set_object_terms( $id, $kategorija, 'kategorija-poslova' );
+    wp_set_object_terms( $id, $lokacija, 'lokacija' );
+
+    add_post_meta($id, 'broj_telefona', $broj_telefona, false);
+    add_post_meta($id, 'email_adresa', $email_adresa, false);
+
+ 
+
+
 get_header(); ?>
 <!-- Main -->
 		<div class="main" role="main">
@@ -30,124 +57,107 @@ get_header(); ?>
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
 							<!-- Profile Form -->
-							<form action="#" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
-
-								<fieldset>
-									<label>Have an account?</label>
-									<div class="field account-sign-in">
-										<p>
-											<a class="btn btn-primary btn-sm" href="#"><i class="fa fa-key"></i> Sign in</a>
-										</p>
-
-										<div class="alert alert-info alert-dismissable">
-											<button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
-											If you don‘t have an account you can create one below by entering your email address. A password will be  automatically emailed to you.
-										</div>
-									</div>
-								</fieldset>
-
-								<fieldset>
-									<label>Your Email <span class="required">*</span></label>
+							<form action="<?php echo get_page_uri(25);?>" method="get" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
+								<fieldset class="fieldset-job_title">
+									<label for="name_surname">Ime i prezime<span class="required">*</span></label>
 									<div class="field">
-										<input type="email" class="form-control" name="create_account_email" id="account_email" placeholder="you@yourdomain.com" value="" />
+										<input type="text" class="form-control" name="name_surname" id="name_surname" placeholder="npr. ”Ivan Ivanovic" value=""/>
+									</div>
+								</fieldset>	
+
+								<fieldset>
+									<label>Email adresa </label>
+									<div class="field">
+										<input type="email" class="form-control" name="email_adresa" id="account_email" placeholder="petarpetrovic@gmail.com" value="" />
 									</div>
 								</fieldset>
-								
 								<!-- Profile Information Fields -->
 								<fieldset class="fieldset-job_title">
-									<label for="resume_title">Job title</label>
+									<label for="broj_telefona">Broj telefona</label>
 									<div class="field">
-										<input type="text" class="form-control" name="job_title" id="job_title" placeholder="e.g. “Painter”" value=""/>
+										<input type="text" class="form-control" name="broj_telefona" id="broj_telefona" placeholder="064... ..." value=""/>
 									</div>
 								</fieldset>
 
 								<fieldset class="fieldset-job_location">
-									<label for="job_location">Location <small>(optional)</small></label>
+									<label for="job_location">Lokacija <span class="required">*</span></label>
 									<div class="field">
-										<input type="text" class="form-control" name="job_location" id="job_location" placeholder="e.g. &quot;London, UK&quot;, &quot;New York&quot;, &quot;Houston, TX&quot;" value=""/>
-										<small class="description">Leave this blank if the job can be done from anywhere (i.e. telecommuting)</small>
+										 <div class="form-group col">
+        <?php 
+        $terms = get_terms( array( 
+            'taxonomy' => 'lokacija',
+            'hide_empty' => false
+        ) );
+        $i = 0;    
+        ?> <div class="d-flex justify-content-start"> <?php                    
+        foreach( $terms as $term ) { ?>
+            <div class="">
+            <input type="checkbox" id="extra-<?php echo $i; ?>"  name="lokacija[]" value="<?php echo $term->name; ?>" class="checkbox--class">
+            <label for="extra-<?php echo $i; ?>" class="select-label color--black"><?php echo $term->name; ?> </label>
+            </div>
+          <?php
+            $i++;
+        };
+        ?>
+    </div>
+    <?php 
+    ?>
+</div>
 									</div>
 								</fieldset>
+
+							<fieldset class="fieldset-job_location">
+									<label for="job_location">Kategorija posla <span class="required">*</span></label>
+									<div class="field">
+										 <div class="form-group col">
+        <?php 
+        $terms = get_terms( array( 
+            'taxonomy' => 'kategorija-poslova',
+            'hide_empty' => false
+        ) );
+        $i = 0;    
+        ?> <div class="d-flex justify-content-start"> <?php                    
+        foreach( $terms as $term ) { ?>
+            <div class="">
+            <input type="checkbox" id="extra-<?php echo $i; ?>"  name="kategorija-poslova[]" value="<?php echo $term->name; ?>" class="checkbox--class">
+            <label for="extra-<?php echo $i; ?>" class="select-label color--black"><?php echo $term->name; ?> </label>
+            </div>
+          <?php
+            $i++;
+        };
+        ?>
+    </div>
+    <?php 
+    ?>
+</div>
+									</div>
+								</fieldset>
+
+								
 
 								<fieldset class="fieldset-company_logo">
-									<label for="company_logo">Photo <small>(optional)</small></label>
+									<label for="company_logo">Slika <small>(opciono)</small></label>
 									<div class="field">
-										<input type="file" class="form-control" name="company_logo" id="company_logo" />
-										<small class="description">Max. file size: 50 MB. Allowed images: jpg, gif, png.</small>
+										<input type="file" class="form-control" name="my_image_upload" id="my_image_upload" />
+										 <?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
+										<small class="description">Max. file size: 1MB. Allowed images: jpg, png.</small>
+										    <input type="hidden" name="post_id" id="post_id" value="84" />
 									</div>
 								</fieldset>
 
-								<div class="row">
-									<div class="col-md-6">
-										<fieldset class="fieldset-job_type">
-											<label for="job_type">Job Type</label>
-											<div class="field select-style">
-												<select name="job_type" id="job_type" class="form-control">
-													<option>Unspecified</option>
-													<option>Furniture Repair &amp; Refinish</option>
-													<option>Pools</option>
-													<option>Plaster &amp; Drywall</option>
-													<option>Painting</option>
-												</select>
-											</div>
-										</fieldset>
-									</div>
-									<div class="col-md-6">
-										<fieldset class="fieldset-job_category">
-											<label for="job_category">Job category</label>
-											<div class="field select-style">
-												<select name="job_category" id="job_category" class="form-control">
-													<option>Unspecified</option>
-													<option>Appliance Services</option>
-													<option>Electrical</option>
-													<option>Handiwork</option>
-													<option>Plumbing</option>
-													<option>Bathroom Design &amp; Remodelling</option>
-												</select>
-											</div>
-										</fieldset>
-									</div>
-								</div>
 
 								<fieldset class="fieldset-job_description">
-									<label>Description</label>
+									<label>Opis</label>
 									<div class="field">
-										<textarea name="textarea" cols="30" rows="8" class="form-control"></textarea>
+										<textarea name="opis_posla" cols="30" rows="8" class="form-control"></textarea>
 									</div>
 								</fieldset>
 
-								<fieldset class="fieldset-skills">
-									<label>Skills</label>
-									<div class="field">
-										<input type="text" class="form-control" name="skills" id="skills" placeholder="Comma separate a list of relevant skills" value=""/>
-									</div>
-								</fieldset>
-
-								<fieldset class="fieldset-url">
-									<label>URL(s)</label>
-									<div class="field">
-										<a href="#">+ Add URL</a> &nbsp; &nbsp; &nbsp; <small class="description">Optionally provide links to any of your websites or social network profiles.</small>
-									</div>
-								</fieldset>
-
-								<fieldset class="fieldset-education">
-									<label>Education</label>
-									<div class="field">
-										<a href="#">+ Add Education</a>
-									</div>
-								</fieldset>
-
-								<fieldset class="fieldset-experience">
-									<label>Experience</label>
-									<div class="field">
-										<a href="#">+ Add Experience</a>
-									</div>
-								</fieldset>
 
 								<div class="spacer"></div>
 
 								<p>
-									<input type="submit" name="submit_job" class="btn btn-primary" value="Preview Profile &rarr;" />
+									<input type="submit" name="submit_job" class="btn btn-primary" value="Dodaj radnika &rarr;" />
 								</p>
 
 							</form>

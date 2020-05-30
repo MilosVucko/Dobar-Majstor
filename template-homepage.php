@@ -31,33 +31,43 @@ get_header(); ?>
 						<div class="container">
 							<div class="search-box-inner">
 								<h1>Pronađi pouzdane lokalne stručnjake</h1>
-								<form action="#" method="POST" role="form">
+								<form action="<?php echo esc_url( get_page_link( 33 ) ); ?>" class="job_filters" method="get">
 
 									<div class="row">
-										<div class="col-md-3 col-md-offset-1">
+										<div class="col-md-5">
+											<div class="select-style">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Ključna reč">
+													<select class="form-control" name='lokacija'>
+										<option value=''>Svi gradovi</option>
+										<?php 
+										$terms = get_terms( array( 
+											'taxonomy' => 'lokacija',
+											'hide_empty' => false
+										) );
+
+										foreach( $terms as $term ) { ?>
+											<option class="option" value="<?php echo $term->name; ?>"><?php echo $term->name; ?> </option>
+									<?php 	}; ?>
+									</select>
 											</div>
 										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Lokacija">
-											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<div class="form-group">
 												<div class="select-style">
-													<select class="form-control">
-														<option>Monter klima uređaja</option>
-														<option>Električar</option>
-														<option>Vodoinstalater</option>
-														<option>Moler</option>
-														<option>Domar</option>
-														<option>Automehaničar</option>
-														<option>Keramičar</option>
-														<option>Fizički radnik</option>
-														<option>Higijenski radnik</option>
-													</select>
+													<select class="form-control" name='kategorija-poslova'>
+										<option value=''>Sve kategorije</option>
+										<?php 
+										$terms = get_terms( array( 
+											'taxonomy' => 'kategorija-poslova',
+											'hide_empty' => false
+										) );
+
+										foreach( $terms as $term ) {
+											echo "<option  class='option' value='" . $term->name . "'>" . $term->name . "</option>";
+										};
+										?>
+									</select>
 												</div>
 											</div>
 										</div>

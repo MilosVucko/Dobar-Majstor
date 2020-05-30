@@ -26,12 +26,6 @@ get_header(); ?>
 			<!-- Page Content -->
 			<section class="page-content">
 
-				<!-- Google Map -->
-				<div class="googlemap-wrapper googlemap-wrapper__contact">
-					<div id="map_canvas" class="map-canvas"></div>
-				</div>
-				<!-- Google Map / End -->
-
 				<div class="container">
 
 					<div class="row">

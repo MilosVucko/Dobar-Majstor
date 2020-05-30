@@ -7,428 +7,189 @@
 * @since dobar-majstor 1.0
 */
 
+
+if (isset($_GET['lokacija']))
+{
+	$lokacija = $_GET['lokacija']; 
+}
+else {
+	$lokacija = "Sve lokacije";
+}
+
+if (isset($_GET['kategorija-poslova']))
+{
+	$kategorija = $_GET['kategorija-poslova'];
+}
+else { 
+	$kategorija = "Sve kategorije";
+}
+
+//var_dump($lokacija);
+//var_dump($kategorija);
+
+
+
 get_header(); ?>
 <!-- Main -->
-		<div class="main" role="main">
+<div class="main" role="main">
 
-			<!-- Page Heading -->
-			<section class="page-heading">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Lista stručnjaka</h1>
-						</div>
-					</div>
+	<!-- Page Heading -->
+	<section class="page-heading">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Lista stručnjaka</h1>
 				</div>
-			</section>
-			<!-- Page Heading / End -->
+			</div>
+		</div>
+	</section>
+	<!-- Page Heading / End -->
 
-			<!-- Page Content -->
-			<section class="page-content">
-				<div class="container">
-					
-					<div class="job_listings">
-						<form class="job_filters">
+	<!-- Page Content -->
+	<section class="page-content">
+		<div class="container">
 
-							<div class="search_jobs">
-								<div class="search_keywords">
+			<div class="job_listings">
+				<form action="<?php echo esc_url( get_page_link( 33 ) ); ?>" class="job_filters" method="get">
+
+					<div class="search_jobs">
+								<!-- <div class="search_keywords">
 									<label for="search_keywords">Ključna reč</label>
 									<input type="text" name="search_keywords" id="search_keywords" placeholder="All Professionals" class="form-control" value="" />
 								</div>
+							-->
+							<div class="search_type">
+								<label>Lokacija</label>
+								<span class="select-style">
+									<select class="form-control" name='lokacija'>
+										<?php 
+										$terms = get_terms( array( 
+											'taxonomy' => 'lokacija',
+											'hide_empty' => false
+										) );
 
-								<div class="search_location">
-									<label for="search_location">Lokacija</label>
-									<input type="text" name="search_location" id="search_location" placeholder="Any Location" class="form-control" value="" />
-								</div>
-
-								<div class="search_type">
-									<label>Kategorija</label>
-									<span class="select-style">
-										<select class="form-control">
-											<option>Sve usluge</option>
-											<option>Monter klima uređaja</option>
-											<option>Električar</option>
-											<option>Vodoinstalater</option>
-											<option>Moler</option>
-											<option>Domar</option>
-											<option>Automehaničar</option>
-											<option>Fizički radnik</option>
-											<option>Higijenski radnik</option>
-										</select>
-									</span>
-								</div>
-
-								<div class="search_submit">
-									<label>Submit</label>
-									<button class="btn btn-block btn-primary"><i class="fa fa-search"></i></button>
-								</div>
+										foreach( $terms as $term ) { ?>
+											<option class="option" value="<?php echo $term->name; ?>" <?php if ( $lokacija == $term->name) { echo 'selected'; } ?>>
+												<?php echo $term->name; ?> 
+											</option>
+										<?php }; ?>
+									</select>
+								</span>
 							</div>
-						</form>
 
-						<ul class="job_listings">
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person1.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>Debbie Bidart</h3>
-										<div class="company">
-											<strong>Paint Removal from Exterior or Interior Surfaces</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> Melbourne, AU
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-										</div>
-										<div class="reviews-num">12 Reviews</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Painting</li>
-										<li class="date">
-											Posted 1 month ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person2.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>Construction Inc.</h3>
-										<div class="company">
-											<strong>Strives to meet the consumers needs.</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> New York, US
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Bathroom Design</li>
-										<li class="date">
-											Posted 2 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing job_position_featured">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person3.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>C &amp; G Plastering</h3>
-										<div class="company">
-											<strong>Quality Jobs You Can Afford</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> London, UK
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="reviews-num">5 Reviews</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Plaster &amp; Drywall</li>
-										<li class="date">
-											Posted 2 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person4.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>White &amp; Sons</h3>
-										<div class="company">
-											<strong>Apply Concrete Floor Coating</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> Melbourne, AU
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="reviews-num">4 Reviews</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Painting</li>
-										<li class="date">
-											Posted 3 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person5.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>Tim's Plastering</h3>
-										<div class="company">
-											<strong>We pride ourselves in excellent workmanship.</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> Houston, TX
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="reviews-num">1 Review</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Plaster &amp; Drywall</li>
-										<li class="date">
-											Posted 2 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person6.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>Crystal Glass Ltd</h3>
-										<div class="company">
-											<strong>Bring the best customer service</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> New York, US
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Furniture Repair &amp; Refinish</li>
-										<li class="date">
-											Posted 3 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person1.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>Tim Green Upholstery</h3>
-										<div class="company">
-											<strong>Quality Jobs You Can Afford</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> New York, US
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="reviews-num">6 Reviews</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Furniture Repair &amp; Refinish</li>
-										<li class="date">
-											Posted 4 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing job_position_featured">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person3.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>C &amp; G Plastering</h3>
-										<div class="company">
-											<strong>Quality Jobs You Can Afford</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> London, UK
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="reviews-num">5 Reviews</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Plaster &amp; Drywall</li>
-										<li class="date">
-											Posted 2 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person4.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>White &amp; Sons</h3>
-										<div class="company">
-											<strong>Apply Concrete Floor Coating</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> Melbourne, AU
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="reviews-num">4 Reviews</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Painting</li>
-										<li class="date">
-											Posted 3 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person5.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>Tim's Plastering</h3>
-										<div class="company">
-											<strong>We pride ourselves in excellent workmanship.</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> Houston, TX
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="reviews-num">1 Review</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Plaster &amp; Drywall</li>
-										<li class="date">
-											Posted 2 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class="job_listing">
-								<a href="#">
-									<div class="job_img">
-										<img src="<?php echo get_template_directory_uri(); ?>/images/samples/person6.jpg" alt="" class="company_logo">
-									</div>
-									<div class="position">
-										<h3>Crystal Glass Ltd</h3>
-										<div class="company">
-											<strong>Bring the best customer service</strong>
-										</div>
-									</div>
-									<div class="location">
-										<i class="fa fa-location-arrow"></i> New York, US
-									</div>
-									<div class="rating">
-										<div class="rating-stars">
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-									</div>
-									<ul class="meta">
-										<li class="job-type">Furniture Repair &amp; Refinish</li>
-										<li class="date">
-											Posted 3 months ago
-										</li>
-									</ul>
-								</a>
-							</li>
-						</ul>
-					</div>
+							<div class="search_type">
+								<label>Kategorija</label>
+								<span class="select-style">
+									<select class="form-control" name='kategorija-poslova'>
+										<?php 
+										$terms = get_terms( array( 
+											'taxonomy' => 'kategorija-poslova',
+											'hide_empty' => false
+										) );
 
-					<div class="spacer"></div>
+										foreach( $terms as $term ) { ?>
+											<option class="option" value="<?php echo $term->name; ?>" <?php if ( $kategorija == $term->name) { echo 'selected'; } ?>><?php echo $term->name; ?> </option>
+										<?php }; ?>
+									</select>
+								</span>
+							</div>
 
-					<div class="row">
-						<div class="col-md-4 col-md-offset-4">
-							<a class="btn btn-default btn-block" href="#">Load more job listings</a>
+							<div class="search_submit">
+								<label>Submit</label>
+								<button class="btn btn-block btn-primary"><i class="fa fa-search"></i> Pretraži</button>
+							</div>
 						</div>
-					</div>
+					</form>
 
-				</div>
-			</section>
-			<!-- Page Content / End -->
+					<ul class="job_listings">
+						
+						<?php 
+						$paged=( get_query_var( 'paged')) ? get_query_var( 'paged') : 1; 
+						$args=array( 'post_type'=> 'radnici',
+							'paged' => $paged,
+							'posts_per_page' => 10,  
+							'tax_query' => array(
+								'relation' => 'AND',
+								array(
+									'taxonomy' => 'kategorija-poslova',
+									'field' => 'slug',
+									'terms' => $kategorija,
+								),
+								array(
+									'taxonomy' => 'lokacija',
+									'field' => 'slug',
+									'terms' => $lokacija,
+								) ,
+							)
+
+						); 
+						$the_query = new WP_Query($args); ?>
+						<?php 
+						if ($the_query->have_posts()): 
+							while ($the_query->have_posts()):
+								$the_query->the_post();
+			// $thumb = get_the_post_thumbnail_url($post->ID, 'fontpage-loop-size'); 
+								$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
+								$kategorije_poslova = wp_get_post_terms($post->ID, 'kategorija-poslova'); 
+								$lokacija = wp_get_post_terms($post->ID, 'lokacija'); 
+			 //var_dump($terms);
+								$kategorija_posla = $kategorije_poslova[0]->name;
+								$lokacija_posla = $lokacija[0]->name;
+								?>
 
 
-<?php get_footer(); ?>
+
+								<li class="job_listing">
+									<a href="<?php the_permalink(); ?>">
+										<div class="job_img">
+											<img src="<?php echo $featured_img_url; ?>" alt="" class="company_logo">
+										</div>
+										<div class="position">
+											<h3><?php the_title(); ?></h3>
+											<div class="company">
+												<strong><?php echo $kategorija_posla; ?></strong>
+											</div>
+										</div>
+										<div class="location">
+											<i class="fa fa-location-arrow"></i> <?php echo $lokacija_posla; ?>
+										</div>
+										<div class="rating">
+											<div class="reviews-num"><?php 	echo kk_star_ratings(); ?></div>
+										</div>
+										<ul class="meta">
+											<li class="job-type"><?php echo $kategorija_posla; ?></li>
+											<li class="date">
+												Dodat <?php echo get_the_date(); ?>
+											</li>
+										</ul>
+									</a>
+								</li>
+
+							<?php endwhile; ?>
+
+							<?php $total_pages=$the_query->max_num_pages; if ($total_pages > 1) 
+							{   $current_page = max(1, get_query_var('paged')); 
+							$paginateLinks = paginate_links(
+								array( 'base' => get_pagenum_link(1) . '%_%', 
+									'format' => '/page/%#%', 'current' => $current_page, 
+									'total' => $total_pages, 
+									'prev_text' => __('') , 
+									'next_text' => __('') , 
+								)
+							); 
+						} ?>
+
+					<?php endif; ?>
+				</ul>
+			</div>
+
+			<div class="spacer"></div>
+
+
+
+		</div>
+	</section>
+	<!-- Page Content / End -->
+
+
+	<?php get_footer(); ?>

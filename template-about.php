@@ -36,18 +36,10 @@ get_header(); ?>
 						</div>
 						<div class="col-md-6 col-md-offset-1">
 							<h2>Ko smo mi?</h2>
-							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin libero at elementum auctor. Sed at velit mi. Nunc rhoncus, diam in tincidunt condimentum, enim massa mollis justo, eu consectetur odio risus eget leo. Proin vel turpis quam. Nulla sollicitudin commodo lectus, vel rutrum lectus suscipit eu. Suspendisse a dui mollis, scelerisque tortor in, tincidunt justo. Donec at hendrerit sem, ac finibus turpis. Sed ut purus ac ipsum commodo tempor. In molestie leo magna, eu tempus diam consectetur vitae. Phasellus congue lorem a ornare tincidunt. Fusce facilisis sagittis ipsum, nec facilisis nisl vulputate ac. Morbi id vehicula ligula, vel congue ante. Mauris nisi quam, dictum quis dictum vitae, luctus sit amet libero. Morbi vitae imperdiet turpis.</p>
+							<p> Tvoj majstor je agencija koja pruža solucije pronalaženja radnika ili majstora za kućne poslove kao i za poslove u poslovnim objektima i izvan istih. Druga solucija koju pružamo je pronalaženje poslova za radnike i majstore.
+</p>
 
-							<div class="list">
-								<ul>
-									<li>test</li>
-									<li>test</li>
-									<li>test</li>
-									<li>test</li>
-									<li>test</li>
-									<li>test</li>
-								</ul>
-							</div>
+							
 
 							<div class="spacer-sm"></div>
 							
@@ -61,12 +53,8 @@ get_header(); ?>
 
 					<div class="row">
 						<div class="col-md-6">
-							<h2>Our Mission</h2>
-							<p>Remodeling your home can be stressful. It’s hard to know where to turn in the case of an emergency repair.</p>
-
-							<p>Commercial work needs to be completed professionally and in a timely manner with extra consideration of codes and regulations. We eliminate the need to flip through the yellow pages, we take away the stress and worry, and most importantly we get the job done right.</p>
-
-							<p>We promise to provide you with outstanding service that you can trust for all of your repair needs.</p>
+							<h2>Naša misija</h2>
+							<p>Cilj agencije Tvoj majstor je povezivanje ljudi kojima je potrebna pomoć oko izvršavalja poslova za koje sami nemaju način rešavanja i pouzdanih majstora koji su stručni u tom polju. Takodje, želimo da pružimo način novim majstorima i majstorima koji imaju manjak posla, da lako i jednostavno pronađu posao koji bi njima odgovarao.</p>
 
 							<a href="#" class="btn btn-primary">Learn More</a>
 						</div>
@@ -77,13 +65,15 @@ get_header(); ?>
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-parent="#accordion" href="#accordion-1">
-												Quality Service
+												Kako mogu biti siguran da su majstori sa Tvoj majstor stranice pouzdani?
+
 											</a>
 										</h4>
 									</div>
 									<div id="accordion-1" class="panel-collapse collapse in">
 										<div class="panel-body">
-											We're here to keep our customers with my low prices and good work (workmanship you can trust) We stand behind my work.
+											Majstore sa naše stranice možete proveriti putem sistema ocenjivanja i recenzija. Da bi se ocenio rad nekog radnika potrebno je poslati sliku radnika dok radi kao i slika završenog rada. Ukoliko želite biti sigurni da će majstor uraditi posao savršeno izabeite radnika sa najvećom ocenom.
+
 										</div>
 									</div>
 								</div>
@@ -91,13 +81,15 @@ get_header(); ?>
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-parent="#accordion" href="#accordion-2" class="collapsed">
-												Trusted Professionals
+												Kako mi Tvoj majstor može predložiti pravog majstora?
+
 											</a>
 										</h4>
 									</div>
 									<div id="accordion-2" class="panel-collapse collapse">
 										<div class="panel-body">
-											We're the largest employer of home repair contractors in the world. Our dedication in hiring and retaining the very best home maintenance and repair technicians is why we are able to deliver a 99% customer satisfaction rating.
+											Naša stranica će vam predstaviti listu majstora sa ocenama za sekciju koju ste vi odabrali. Izbor majstora vršite vi sami.
+
 										</div>
 									</div>
 								</div>
@@ -105,30 +97,19 @@ get_header(); ?>
 									<div class="panel-heading">
 										<h4 class="panel-title">
 											<a data-toggle="collapse" data-parent="#accordion" href="#accordion-3" class="collapsed">
-												Experience and Skill
+												Šta ako se predomislim tokom projekta i želim otkazati ugovor?
+
 											</a>
 										</h4>
 									</div>
 									<div id="accordion-3" class="panel-collapse collapse">
 										<div class="panel-body">
-											We've consistently hired experienced, reliable employees whose skills are further refined through technical and customer service training.
+Odluku o obustavi projekta ćete morati razraditi između vas i stručnjaka za usluge. Očekujte da ćete platiti za rad i materijale izvedene do tog trenutka. Molimo vas da ne zaboravite da se vratite na našu web stranicu da biste ocenili rad i ostavili komentar.
+
 										</div>
 									</div>
 								</div>
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#accordion-4" class="collapsed">
-												Honesty and Integrity
-											</a>
-										</h4>
-									</div>
-									<div id="accordion-4" class="panel-collapse collapse">
-										<div class="panel-body">
-											We are ready to be your long term partner for all of your needs. Contact us to day and see how we can help you!
-										</div>
-									</div>
-								</div>
+
 							</div>
 						</div>
 					</div>
