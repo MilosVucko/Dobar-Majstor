@@ -81,6 +81,17 @@
 								<!-- /Widget :: Latest Posts -->
 							</div>
 
+							<div class="col-sm-4 col-md-4">
+								<!-- Widget :: Contacts Info -->
+								<div class="contacts-widget widget widget__footer">
+									<h3 class="widget-title">Viber QR kod</h3>
+									<div class="widget-content">
+										<img src="<?php echo get_template_directory_uri();?>/images/viber-bot-qr-code.png" />
+									</div>
+								</div>
+								<!-- /Widget :: Contacts Info -->
+							</div>
+
 							<div class="clearfix visible-sm"></div>
 
 						
@@ -91,7 +102,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-12">
-								Copyright &copy; 2020  <a href="index.html">TvojMajstor</a>
+								Copyright &copy; 2020  <a href="<?php echo get_home_url(); ?>">TvojMajstor</a>
 							</div>
 						</div>
 					</div>

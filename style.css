@@ -54,3 +54,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .company strong:first-child {
 	display: none;
 }
+@media(max-width:576px) { 
+	.header-top-left {
+	display: none;
+}
+ }
