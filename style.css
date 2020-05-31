@@ -59,3 +59,14 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	display: none;
 }
  }
+ .wpd-comment-text img {
+	max-width: 100%;
+}
+.success-msg {
+	display: block;
+	text-align: center;
+	background: #68d968;
+	padding: 10px;
+	color: #fff;
+	box-shadow: 10px 10px 10px #77d777;
+}

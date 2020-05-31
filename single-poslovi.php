@@ -45,6 +45,10 @@
 									<h4>Opis</h4>
 									<p><?php the_content(); ?></p>
 									
+									<h4>Kontakt</h4>
+									<p>Broj telefona: <?php the_field('broj_telefona'); ?></p>
+									<p>Email adresa: <?php the_field('email_adresa'); ?></p>
+
 									
 								</div>
 							</div>

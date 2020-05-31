@@ -7,14 +7,14 @@
 * @since dobar-majstor 1.0
 */
 
-$ime_prezime = $_GET['name_surname'];
-$email_adresa = $_GET['email_adresa'];
-$broj_telefona = $_GET['broj_telefona'];
-$opis = $_GET['opis_posla'];
+$ime_prezime = $_POST['name_surname'];
+$email_adresa = $_POST['email_adresa'];
+$broj_telefona = $_POST['broj_telefona'];
+$opis = $_POST['opis_posla'];
 $forma_dodata = false;
 
-$kategorija = $_GET['kategorija-poslova'];
-$lokacija = $_GET['lokacija'];
+$kategorija = $_POST['kategorija-poslova'];
+$lokacija = $_POST['lokacija'];
 
 //$profile_image = $_FILES['profile_image'];
 
@@ -30,39 +30,41 @@ $id = wp_insert_post(array(
 
 var_dump($id);
 
+	
+	
+
 wp_set_object_terms( $id, $kategorija, 'kategorija-poslova' );
 wp_set_object_terms( $id, $lokacija, 'lokacija' );
 
 add_post_meta($id, 'broj_telefona', $broj_telefona, false);
 add_post_meta($id, 'email_adresa', $email_adresa, false);
 
- //Postavljanje featured slike
- // if ( isset($_GET['submit_worker']) ) {
+if ( 
+    isset( $_POST['my_image_upload_nonce'], $_POST['post_id'] ) 
+    && wp_verify_nonce( $_POST['my_image_upload_nonce'], 'my_image_upload' )
+    && current_user_can( 'edit_post', $_POST['post_id'] )
+) {
+    // The nonce was valid and the user has the capabilities, it is safe to continue.
  
- //        $upload = wp_upload_bits($_FILES['profile_image']['name'], null, file_get_contents($_FILES['profile_image']['name']));
+    // These files need to be included as dependencies when on the front end.
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+    require_once( ABSPATH . 'wp-admin/includes/media.php' );
+     
+    // Let WordPress handle the upload.
+    // Remember, 'my_image_upload' is the name of our file input in our form above.
+    $attachment_id = media_handle_upload( 'my_image_upload', $_POST['post_id'] );
+     
+    if ( is_wp_error( $attachment_id ) ) {
+        // There was an error uploading the image.
+    } else {
+        // The image was uploaded successfully!
+    }
  
- //        if ( ! $upload_file['error'] ) {
- //            $post_id = $id; //set post id to which you need to set featured image
- //            $filename = $upload['file'];
- //            $wp_filetype = wp_check_filetype($filename, null);
- //            $attachment = array(
- //                'post_mime_type' => $wp_filetype['type'],
- //                'post_title' => sanitize_file_name($filename),
- //                'post_content' => '',
- //                'post_status' => 'inherit'
- //            );
+} else {
  
- //            $attachment_id = wp_insert_attachment( $attachment, $filename, $post_id );
- 
- //            if ( ! is_wp_error( $attachment_id ) ) {
- //                require_once(ABSPATH . 'wp-admin/includes/image.php');
- 
- //                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
- //                wp_update_attachment_metadata( $attachment_id, $attachment_data );
- //                set_post_thumbnail( $post_id, $attachment_id );
- //            }
- //        }
- //    }
+    // The security check failed, maybe show the user an error.
+}
 
 
 get_header(); ?>
@@ -86,9 +88,17 @@ get_header(); ?>
 		<div class="container">
 
 			<div class="row">
+
+				<div class="col-12"> 
+					<?php 
+					if ( isset($_POST['submit_worker'] ) ) { ?>
+						<p class="success-msg">Radnik je uspesno dodat</p>
+				<?php } ?>
+				</div>
+
 				<div class="col-md-8 col-md-offset-2">
 					<!-- Profile Form -->
-					<form action="<?php echo get_page_uri(25);?>" method="get" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
+					<form action="#" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
 						<fieldset class="fieldset-job_title">
 							<label for="name_surname">Ime i prezime<span class="required">*</span></label>
 							<div class="field">
@@ -169,10 +179,15 @@ get_header(); ?>
 				<fieldset class="fieldset-company_logo">
 					<label for="company_logo">Slika <small>(opciono)</small></label>
 					<div class="field">
-						<input type="file" class="form-control" name="profile_image" id="profile_image"  accept="image/x-png,image/jpg,image/jpeg" />
-
+ 				
+    <input type="file" name="my_image_upload" id="my_image_upload"  multiple="false" />
+    <input type="hidden" name="post_id" id="post_id" value="<?php echo $id; ?>" />
+    <?php wp_nonce_field( 'my_image_upload', 'my_image_upload_nonce' ); ?>
+				
 					</div>
 				</fieldset>
+
+				<input type="hidden" name="forma_dodata" value="uspesno"/>
 
 
 				<fieldset class="fieldset-job_description">
@@ -198,4 +213,36 @@ get_header(); ?>
 </div>
 <!-- Page Content / End -->
 
+<?php
+ 
+// Check that the nonce is valid, and the user can edit this post.
+if ( 
+    isset( $_POST['my_image_upload_nonce'], $_POST['post_id'] ) 
+    && wp_verify_nonce( $_POST['my_image_upload_nonce'], 'my_image_upload' )
+    && current_user_can( 'edit_post', $_POST['post_id'] )
+) {
+    // The nonce was valid and the user has the capabilities, it is safe to continue.
+ 
+    // These files need to be included as dependencies when on the front end.
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+    require_once( ABSPATH . 'wp-admin/includes/media.php' );
+     
+    // Let WordPress handle the upload.
+    // Remember, 'my_image_upload' is the name of our file input in our form above.
+    $attachment_id = media_handle_upload( 'my_image_upload', $_POST['post_id'] );
+     
+    if ( is_wp_error( $attachment_id ) ) {
+        // There was an error uploading the image.
+    } else {
+        // The image was uploaded successfully!
+    }
+ 
+} else {
+ 
+    // The security check failed, maybe show the user an error.
+}
+ //update_post_meta($id,'_thumbnail_id',$attachment_id);
+
+?>
 <?php get_footer(); ?>

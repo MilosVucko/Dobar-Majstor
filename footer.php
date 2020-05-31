@@ -58,23 +58,31 @@
 									<h3 class="widget-title">Najnovije dodati poslovi</h3>
 									<div class="widget-content">
 										<ul class="latest-posts-list">
-											
-										
-											<li>
-												<figure class="thumbnail"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/post-img1-sm.jpg" alt=""></a></figure>
-												<h5 class="title"><a href="#">Potreban mi je klima monter</a></h5>
-												<span class="date">Maj 31 2020</span>
+											<?php 
+						$args=array( 'post_type'=> 'poslovi',
+							'posts_per_page' => 3 ); 
+						$footer_query = new WP_Query($args); ?>
+						<?php 
+						if ($footer_query->have_posts()): 
+							while ($footer_query->have_posts()):
+								$footer_query->the_post();
+			// $thumb = get_the_post_thumbnail_url($post->ID, 'fontpage-loop-size'); 
+								// $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full'); 
+								// $kategorije_poslova = wp_get_post_terms($post->ID, 'kategorija-poslova'); 
+								// $lokacija = wp_get_post_terms($post->ID, 'lokacijaposlovi'); 
+			 //var_dump($terms);
+								// $kategorija_posla = $kategorije_poslova[0]->name;
+								 // $lokacija_posla = $lokacija[1]->name;
+								?>
+
+								<li>
+												<figure class="thumbnail"><a href="<?php echo get_permalink(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/worker-1.png" alt=""></a></figure>
+												<h5 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+												<span class="date"><?php echo get_the_date(); ?></span>
 											</li>
-											<li>
-												<figure class="thumbnail"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/post-img1-sm.jpg" alt=""></a></figure>
-												<h5 class="title"><a href="#">Potreban mi je klima monter</a></h5>
-												<span class="date">Maj 31 2020</span>
-											</li>
-											<li>
-												<figure class="thumbnail"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/samples/post-img1-sm.jpg" alt=""></a></figure>
-												<h5 class="title"><a href="#">Potreban mi je klima monter</a></h5>
-												<span class="date">Maj 31 2020</span>
-											</li>
+
+							<?php endwhile; endif; wp_reset_postdata(); ?>
+
 										</ul>
 									</div>
 								</div>

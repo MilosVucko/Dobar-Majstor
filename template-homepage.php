@@ -149,7 +149,9 @@ get_header(); ?>
 									</a>
 								</li>
 						<?php endwhile; 
-					endif; ?>
+					endif; 
+					wp_reset_postdata();
+					?>
 						
 									</ul>
 								</a>
