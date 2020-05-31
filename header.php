@@ -81,8 +81,8 @@
 						</button>
 						<div class="menu-container">
 							<ul class="header-top-nav header-top-nav__tertiary">
-								<li><a href="page-login.html"><i class="fa fa-user-plus"></i> Registracija</a></li>
-								<li><a href="page-login.html"><i class="fa fa-sign-in"></i> Prijava</a></li>
+								<li><a href="#"><i class="fa fa-user-plus"></i> Registracija</a></li>
+								<li><a href="#"><i class="fa fa-sign-in"></i> Prijava</a></li>
 							</ul>
 						</div>
 					</div>
