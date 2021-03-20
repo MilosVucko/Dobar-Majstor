@@ -2,6 +2,7 @@
 /**
  * The template for displaying 404 pages (not found)
  *
+ Izmene direktno kroz github :)
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
  * @package Dobar_Majstor
